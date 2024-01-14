@@ -5,7 +5,8 @@
 #include <stdint.h>
 #include "parenthesis.h"
 
-error_code_t decodeExpression(char * expr, int * value);
+
 void covertInfixToPostfix(char* expression, char * postFixExpr);
+void parsePostfix(char * expression);
 
 #endif // !__MATH_DECODE_H__

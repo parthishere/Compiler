@@ -14,7 +14,7 @@
 #endif
 
 typedef struct{
-    char * buffer;
+    int * buffer;
     int max_size;
     int current_size;
 }stack_t;
@@ -27,7 +27,7 @@ typedef enum {
 stack_t * createStack(uint8_t size);
 void deleteStack(stack_t * stack_instance);
 
-int pushStack(stack_t * stack_instance, char data);
+int pushStack(stack_t * stack_instance, int data);
 error_code_t popStack(stack_t * stack_instance, int * data);
 
 error_code_t topElement(stack_t * stack_instance, int * data);

@@ -5,7 +5,7 @@ stack_t *createStack(uint8_t max_size)
 {
     stack_t *stackInstance = (stack_t *)malloc(sizeof(stack_t));
 
-    char *stack_buffer = (char *)malloc((max_size) * sizeof(char));
+    int *stack_buffer = (int *)malloc((max_size) * sizeof(int));
 
     if (stack_buffer != NULL)
     {
@@ -30,16 +30,16 @@ stack_t *createStack(uint8_t max_size)
 void deleteStack(stack_t *stack_instance)
 {
 
-    free(stack_instance->buffer);
-    if (stack_instance->buffer != NULL)
-    {
-        free(stack_instance->buffer);
+    if(stack_instance!= NULL){
+        if(stack_instance->buffer != NULL){
+            free(stack_instance->buffer);
+        }
+        free(stack_instance);
     }
-
-    free(stack_instance);
+    
 }
 
-int pushStack(stack_t *stack_instance, char data)
+int pushStack(stack_t *stack_instance, int data)
 {
     if (stack_instance->current_size == (stack_instance->max_size))
     {
