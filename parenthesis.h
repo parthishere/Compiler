@@ -1,3 +1,13 @@
+/**
+ * @file    parenthesis.h
+ * @brief
+ *
+ *
+ * @author  Parth Thakkar
+ * @date    20th Sept 2023
+ *
+ */
+
 #ifndef __PARANTHESIS_H__
 #define __PARANTHESIS_H__
 

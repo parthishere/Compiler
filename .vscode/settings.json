@@ -2,6 +2,10 @@
     "files.associations": {
         "*.excalidraw": "json",
         "*.excalidrawlib": "json",
-        "numbers": "c"
+        "numbers": "c",
+        "stack.h": "c",
+        "assert.h": "c",
+        "cmath": "c",
+        "math_decode.h": "c"
     }
 }

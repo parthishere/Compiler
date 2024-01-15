@@ -1,3 +1,13 @@
+/**
+ * @file    stack.h
+ * @brief
+ *
+ *
+ * @author  Parth Thakkar
+ * @date    20th Sept 2023
+ *
+ */
+
 #ifndef __STACK_H__
 #define __STACK_H__
 
@@ -8,9 +18,9 @@
 #define DEBUG_PRINT 0
 
 #if DEBUG_PRINT == 1
-#define log printf 
+#define logPrint printf 
 #else
-#define log(...) 
+#define logPrint(...) 
 #endif
 
 typedef struct{

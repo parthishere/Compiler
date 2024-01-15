@@ -1,3 +1,13 @@
+/**
+ * @file    stack.c
+ * @brief
+ *
+ *
+ * @author  Parth Thakkar
+ * @date    20th Sept 2023
+ *
+ */
+
 #include "stack.h"
 
 
@@ -43,7 +53,7 @@ int pushStack(stack_t *stack_instance, int data)
 {
     if (stack_instance->current_size == (stack_instance->max_size))
     {
-        log("Stack overflow !!!\n ");
+        logPrint("Stack overflow !!!\n ");
         return ERROR;
     }
     stack_instance->buffer[stack_instance->current_size++] = data;
@@ -56,7 +66,7 @@ error_code_t popStack(stack_t *stack_instance, int * data)
 
     if (stack_instance->current_size == 0)
     {
-        log("Stack empty !!!\n ");
+        logPrint("Stack empty !!!\n ");
         return ERROR;
     }
 
@@ -81,7 +91,7 @@ error_code_t topElement(stack_t *stack_instance, int * data)
 {
     if (stack_instance->current_size == 0)
     {
-        log("Stack empty !!!\n ");
+        logPrint("Stack empty !!!\n ");
         return ERROR;
     }
     *data = stack_instance->buffer[stack_instance->current_size];
@@ -91,7 +101,7 @@ error_code_t topElement(stack_t *stack_instance, int * data)
 error_code_t notEmptyStack(stack_t *stack_instance){
     if (stack_instance->current_size == 0)
     {
-        log("Stack empty !!!\n ");
+        logPrint("Stack empty !!!\n ");
         return ERROR;
     }
     return VALID;
