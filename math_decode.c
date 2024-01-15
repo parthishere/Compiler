@@ -17,14 +17,19 @@ int isOpeningBracket(char ch){
     return (ch == '(' || ch == '{' || ch == '[' );
 }
 
-// void remove_spaces(char* s) {
-//     char* d = s;
-//     do {
-//         while (*d == ' ') {
-//             ++d;
-//         }
-//     } while (*s++ = *d++);
-// }
+char * removeSpaces(char *str)
+{
+  char *out = str, *put = str;
+
+  for(; *str != '\0'; ++str)
+  {
+    if(*str != ' ')
+      *put++ = *str;
+  }
+  *put = '\0';
+
+  return out;
+}
 
 int is_delimiter(char c, const char delimiter)
 {
@@ -76,7 +81,7 @@ void covertInfixToPostfix(char* expression, char * postFixExpr)
         return;
     }
     
-    // remove_spaces(expression);
+    expression = removeSpaces(expression);
 
     int postFixExprIndex = 0;
     stack_t * stack = createStack(50);
