@@ -96,7 +96,6 @@ void covertInfixToPostfix(char* expression, char * postFixExpr)
             pushStack(stack, *expression);
         }
         else if(*expression == '}' || *expression == ']' || *expression == ')' ){
-            printStack(stack);
             
             int popping_bracket;
             topElement(stack, &popping_bracket);
@@ -140,7 +139,7 @@ void covertInfixToPostfix(char* expression, char * postFixExpr)
         postFixExpr[postFixExprIndex] = top_element;
         postFixExprIndex++;
     }
-
+    // postFixExpr[postFixExprIndex-2] = '\0';
     postFixExpr[postFixExprIndex] = '\0';
 
     parsePostfix(postFixExpr);
@@ -156,62 +155,60 @@ void parsePostfix(char * expression){
     int start = -1;     // Start index of the current number being parsed; -1 indicates not currently within a number
     int index = 0;     // Current index in the input string
 
-   
-    // int num_count = 0;
 
-    char *temp_expr = expression;
-
-    while(*temp_expr != '\0'){
-        if (!is_delimiter(*temp_expr, ',') && start == -1)
+    while(expression[index] != '\0'){
+        if (!is_delimiter(expression[index], ',') && start == -1)
         {
             // If the current character is not a delimiter and we are not already within a number
             start = index; // Set 'start' to the current index
         }
 
-        else if (start != -1 && (is_delimiter(*(temp_expr+1), ',') || *(temp_expr+1) == '\0'))
+        if (start != -1 && (is_delimiter(expression[index+1], ',') || expression[index+1] == '\0'))
         { // If we are within a number and the next character is a delimiter or the end of the string
             // Found the end of a number
             int length = index - start + 1; // Calculate the length of the current number
+
+            printf("got string after spitting it, %c\n", expression[start]);
+            if(isOperator(expression[start])){
+                int op1, op2, result;
+                printf("parsed operator %c\n", expression[start]);
+
+                if (popStack(stack, &op1) == ERROR) break;
+                if (popStack(stack, &op2) == ERROR) break;
+
+                switch(expression[start]){
+                    case '+':
+                        result = op1 + op2;
+                        break;
+                    case '-':
+                        result = op1 - op2;
+                        break;
+                    case '*':
+                        result = op1 * op2;
+                        break;
+                    case '/':
+                        result = op1 / op2;
+                        break;
+                    case '^':
+                        result = op1 ^ op2;
+                        break;
+                    default:
+                        result = 0;
+                }
+                pushStack(stack, result);
+            }
+            else{
+                // Decode a decimal number
+                int temp_number = parse_decimal(&expression[start], length);
+                printf("parsed number or parsed char : %d\n", temp_number);
+                pushStack(stack, temp_number);
+            }
             
-            
-            // Decode a decimal number
-            int temp_number = parse_decimal(&temp_expr[start], length);
-            if (temp_number == ERROR)
-                break ;
-            // numbers[num_count++] = temp_number;
-            pushStack(stack, temp_number);
-            
+             
             start = -1; // Reset 'start' for the next number
         }
 
-        else if(isOperand(*temp_expr)){
-            int op1, op2, result;
-
-            if (popStack(stack, &op1) == ERROR) break;
-            if (popStack(stack, &op2) == ERROR) break;
-
-            switch(*temp_expr){
-                case '+':
-                    result = op1 +op2;
-                    break;
-                case '-':
-                    result = op1 - op2;
-                    break;
-                case '*':
-                    result = op1 * op2;
-                    break;
-                case '/':
-                    result = op1 / op2;
-                    break;
-                case '^':
-                    result = op1 ^ op2;
-                    break;
-            }
-            pushStack(stack, result);
-        }
-
-
-        temp_expr++; // Move to the next character
+        index++; // Move to the next character
     }
 
     int result;

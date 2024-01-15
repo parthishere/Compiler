@@ -8,7 +8,9 @@
 
 int main(){
 
-    char infix[] = "10+{12+13*(14-15)}-2\0";
+    // char infix[] = "10+{12+13*(14-15)}-2\0";
+    // char infix[] = "10+{12+13*(14-15)}-2\0";
+    char infix[] = "2+3\0";
     char postfix[300];
     covertInfixToPostfix(infix, postfix);
     printf("Infix expression: %s\n", infix);
