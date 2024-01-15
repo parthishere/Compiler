@@ -213,7 +213,7 @@ void parsePostfix(char * expression){
 
     int result;
     popStack(stack, &result);
-    printf("final answer is %d \n", result);
+    printf("Final answer is:-> %d \n", result);
 
     
     deleteStack(stack);
