@@ -142,7 +142,7 @@ void covertInfixToPostfix(char* expression, char * postFixExpr)
     // postFixExpr[postFixExprIndex-2] = '\0';
     postFixExpr[postFixExprIndex] = '\0';
 
-    parsePostfix(postFixExpr);
+    
 
     deleteStack(stack);
 } 
@@ -168,7 +168,6 @@ void parsePostfix(char * expression){
             // Found the end of a number
             int length = index - start + 1; // Calculate the length of the current number
 
-            printf("got string after spitting it, %c\n", expression[start]);
             if(isOperator(expression[start])){
                 int op1, op2, result;
                 printf("parsed operator %c\n", expression[start]);
@@ -181,7 +180,7 @@ void parsePostfix(char * expression){
                         result = op1 + op2;
                         break;
                     case '-':
-                        result = op1 - op2;
+                        result = op2 - op1;
                         break;
                     case '*':
                         result = op1 * op2;
@@ -195,6 +194,7 @@ void parsePostfix(char * expression){
                     default:
                         result = 0;
                 }
+
                 pushStack(stack, result);
             }
             else{
