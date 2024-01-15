@@ -11,6 +11,18 @@
 #include "stack.h"
 
 
+/*
+* Function: createStack
+* ---------------------
+* Description: Allocates memory for a new stack and its buffer, initializing its properties.
+*              The function creates a stack with a specified maximum size.
+*
+* Parameters:
+*   max_size - The maximum number of elements the stack can hold.
+*
+* Returns:
+*   A pointer to the newly created stack instance.
+*/
 stack_t *createStack(uint8_t max_size)
 {
     stack_t *stackInstance = (stack_t *)malloc(sizeof(stack_t));
@@ -37,6 +49,18 @@ stack_t *createStack(uint8_t max_size)
     return stackInstance;
 }
 
+
+/*
+* Function: deleteStack
+* ---------------------
+* Description: Frees the memory allocated for the stack and its buffer.
+*
+* Parameters:
+*   stack_instance - Pointer to the stack to be deleted.
+*
+* Returns:
+*   void
+*/
 void deleteStack(stack_t *stack_instance)
 {
 
@@ -49,6 +73,20 @@ void deleteStack(stack_t *stack_instance)
     
 }
 
+
+/*
+* Function: pushStack
+* -------------------
+* Description: Adds a new element to the top of the stack.
+*              If the stack is full (i.e., at max capacity), the function logs an overflow message.
+*
+* Parameters:
+*   stack_instance - Pointer to the stack where the data will be added.
+*   data - The data to be pushed onto the stack.
+*
+* Returns:
+*   The data pushed onto the stack, or ERROR if the stack is full.
+*/
 int pushStack(stack_t *stack_instance, int data)
 {
     if (stack_instance->current_size == (stack_instance->max_size))
@@ -61,6 +99,20 @@ int pushStack(stack_t *stack_instance, int data)
     return data;
 }
 
+
+/*
+* Function: popStack
+* ------------------
+* Description: Removes the top element from the stack and returns it.
+*              If the stack is empty, the function logs an empty stack message and returns ERROR.
+*
+* Parameters:
+*   stack_instance - Pointer to the stack from which the data will be popped.
+*   data - Pointer to store the popped data.
+*
+* Returns:
+*   VALID if the operation is successful, ERROR if the stack is empty.
+*/
 error_code_t popStack(stack_t *stack_instance, int * data)
 {
 
@@ -76,6 +128,17 @@ error_code_t popStack(stack_t *stack_instance, int * data)
     return VALID;
 }
 
+/*
+* Function: printStack
+* --------------------
+* Description: Prints the contents of the stack, along with their indices.
+*
+* Parameters:
+*   stack_instance - Pointer to the stack to be printed.
+*
+* Returns:
+*   void
+*/
 void printStack(stack_t *stack_instance)
 {
     printf("\n-----------\n");
@@ -87,6 +150,20 @@ void printStack(stack_t *stack_instance)
     printf("-----------\n");
 }
 
+
+/*
+    Function: topElement
+    --------------------
+    Description: Retrieves the top element of the stack without removing it.
+            If the stack is empty, the function logs an empty stack message and returns ERROR.
+
+    Parameters:
+        tack_instance - Pointer to the stack.
+        data - Pointer to store the top element.
+
+    Returns:
+        VALID if the stack is not empty, ERROR otherwise.
+*/
 error_code_t topElement(stack_t *stack_instance, int * data)
 {
     if (stack_instance->current_size == 0)
@@ -98,6 +175,20 @@ error_code_t topElement(stack_t *stack_instance, int * data)
     return VALID;
 }
 
+
+
+/*
+    Function: notEmptyStack
+    --------------------
+    Description: Checks if the stack is not empty.
+            If the stack is empty, it logs an empty stack message and returns ERROR.
+
+    Parameters:
+        stack_instance - Pointer to the stack to be checked.
+
+    Returns:
+        VALID if the stack is not empty, ERROR otherwise.
+*/
 error_code_t notEmptyStack(stack_t *stack_instance){
     if (stack_instance->current_size == 0)
     {
