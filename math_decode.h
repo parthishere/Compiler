@@ -1,7 +1,10 @@
 /**
  * @file    math_decode.h
- * @brief
+ * @brief   Header file for mathematical expression decoding functions.
  *
+ *          This file declares functions for converting infix mathematical 
+ *          expressions to postfix notation and for parsing these postfix 
+ *          expressions.
  *
  * @author  Parth Thakkar
  * @date    14th Jan 2024
