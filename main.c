@@ -54,16 +54,27 @@ int main(){
 
     // Sequentially pop and print multiple elements from the stack.
     // This loop demonstrates the LIFO (Last-In-First-Out) nature of the stack.
-    printf("Popped element: %d\n", popStack(stack1, &popElement));
-    printf("Popped element: %d\n", popStack(stack1, &popElement));
-    printf("Popped element: %d\n", popStack(stack1, &popElement));
-    printf("Popped element: %d\n", popStack(stack1, &popElement));
-    printf("Popped element: %d\n", popStack(stack1, &popElement));
-    printf("Popped element: %d\n", popStack(stack1, &popElement));
-    printf("Popped element: %d\n", popStack(stack1, &popElement));
-    printf("Popped element: %d\n", popStack(stack1, &popElement));
-    printf("Popped element: %d\n", popStack(stack1, &popElement));
-    printf("Popped element: %d\n", popStack(stack1, &popElement));
+    popStack(stack1, &popElement);
+    printf("Popped element: %d\n",popElement);
+    popStack(stack1, &popElement);
+    printf("Popped element: %d\n", popElement);
+    popStack(stack1, &popElement);
+    printf("Popped element: %d\n", popElement);
+    popStack(stack1, &popElement);
+    printf("Popped element: %d\n", popElement);
+    popStack(stack1, &popElement);
+    printf("Popped element: %d\n", popElement);
+    popStack(stack1, &popElement);
+    printf("Popped element: %d\n", popElement);
+    popStack(stack1, &popElement);
+    printf("Popped element: %d\n", popElement);
+    popStack(stack1, &popElement);
+    printf("Popped element: %d\n", popElement);
+    popStack(stack1, &popElement);
+    printf("Popped element: %d\n", popElement);
+    popStack(stack1, &popElement);
+    printf("Popped element: %d\n", popElement);
+    popStack(stack1, &popElement);
 
     // Empty stack
     printf("popped element: %d", popStack(stack1, &popElement));  
